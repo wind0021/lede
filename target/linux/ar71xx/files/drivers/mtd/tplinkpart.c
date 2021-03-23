@@ -17,7 +17,7 @@
 #include <linux/mtd/partitions.h>
 #include <linux/version.h>
 
-#define TPLINK_NUM_PARTS	5
+#define TPLINK_NUM_PARTS	6
 #define TPLINK_HEADER_V1	0x01000000
 #define TPLINK_HEADER_V2	0x02000000
 #define MD5SUM_LEN		16
@@ -172,6 +172,10 @@ static int tplink_parse_partitions_offset(struct mtd_info *master,
 	parts[4].name = "firmware";
 	parts[4].offset = offset;
 	parts[4].size = art_offset - offset;
+	
+	parts[5].name = "fullflash";
+	parts[5].offset = 0;
+	parts[5].size = master->size
 
 	vfree(header);
 
